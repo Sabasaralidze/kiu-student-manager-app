@@ -74,6 +74,7 @@
     </footer>
 
     @include('layouts.partials.theme-script')
+    @include('layouts.partials.password-toggle-script')
 
 </body>
 </html>

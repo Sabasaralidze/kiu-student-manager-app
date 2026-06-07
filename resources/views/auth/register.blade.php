@@ -27,15 +27,19 @@
         <input type="email" id="email" name="email" value="{{ old('email') }}" required>
     </div>
 
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-    </div>
+    @include('layouts.partials.password-field', [
+        'id' => 'password',
+        'name' => 'password',
+        'label' => 'Password',
+        'required' => true,
+    ])
 
-    <div class="form-group">
-        <label for="password_confirmation">Confirm password</label>
-        <input type="password" id="password_confirmation" name="password_confirmation" required>
-    </div>
+    @include('layouts.partials.password-field', [
+        'id' => 'password_confirmation',
+        'name' => 'password_confirmation',
+        'label' => 'Confirm password',
+        'required' => true,
+    ])
 
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">Register</button>

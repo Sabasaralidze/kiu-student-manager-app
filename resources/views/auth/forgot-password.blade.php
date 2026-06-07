@@ -9,7 +9,14 @@
 </p>
 
 @if (session('status'))
-    <div class="msg-box success">{{ session('status') }}</div>
+    <div class="msg-box success">
+        @if (session('mail-log-hint'))
+            Reset link saved to <strong>storage/logs/laravel.log</strong> (local mode).
+            Press <strong>Ctrl+F</strong>, search <strong>Reset Password</strong>, and open the <strong>last (newest)</strong> link only.
+        @else
+            {{ session('status') }}
+        @endif
+    </div>
 @endif
 
 @if ($errors->any())

@@ -26,10 +26,12 @@
         <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus>
     </div>
 
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-    </div>
+    @include('layouts.partials.password-field', [
+        'id' => 'password',
+        'name' => 'password',
+        'label' => 'Password',
+        'required' => true,
+    ])
 
     <div class="remember-row">
         <label>

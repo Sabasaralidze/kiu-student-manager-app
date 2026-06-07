@@ -4,6 +4,11 @@
 
 <h2 class="page-title">New password</h2>
 
+<p class="file-hint" style="margin-bottom:18px">
+    Use the <strong>latest</strong> reset link from <strong>storage/logs/laravel.log</strong>.
+    Older links stop working after you request a new one.
+</p>
+
 @if ($errors->any())
     <div class="msg-box error">
         <ul>
@@ -23,15 +28,19 @@
         <input type="email" id="email" name="email" value="{{ old('email', $request->email) }}" required autofocus>
     </div>
 
-    <div class="form-group">
-        <label for="password">New password</label>
-        <input type="password" id="password" name="password" required>
-    </div>
+    @include('layouts.partials.password-field', [
+        'id' => 'password',
+        'name' => 'password',
+        'label' => 'New password',
+        'required' => true,
+    ])
 
-    <div class="form-group">
-        <label for="password_confirmation">Confirm password</label>
-        <input type="password" id="password_confirmation" name="password_confirmation" required>
-    </div>
+    @include('layouts.partials.password-field', [
+        'id' => 'password_confirmation',
+        'name' => 'password_confirmation',
+        'label' => 'Confirm password',
+        'required' => true,
+    ])
 
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">Reset password</button>

@@ -256,6 +256,39 @@
     textarea { min-height: 100px; resize: vertical; }
     .file-hint { font-size: 12px; color: var(--text-soft); margin: 5px 0 0; }
 
+    .password-wrap {
+        position: relative;
+    }
+
+    .password-wrap input {
+        padding-right: 44px;
+    }
+
+    .password-toggle-btn {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: none;
+        background: transparent;
+        color: var(--text-soft);
+        cursor: pointer;
+    }
+
+    .password-toggle-btn:hover {
+        color: var(--navy);
+    }
+
+    .password-toggle-btn .icon-eye-off { display: none; }
+    .password-toggle-btn.is-visible .icon-eye { display: none; }
+    .password-toggle-btn.is-visible .icon-eye-off { display: block; }
+
     .form-actions {
         margin-top: 24px;
         padding-top: 18px;

@@ -3,6 +3,11 @@
 @section('content')
 
 <h2 class="page-title">My Tasks</h2>
+
+@if (session('success'))
+    <div class="msg-box success">{{ session('success') }}</div>
+@endif
+
 <p class="task-meta" style="margin:-12px 0 18px">Signed in as <strong>{{ auth()->user()->name }}</strong></p>
 
 <div class="toolbar">
