@@ -3,6 +3,7 @@
 @section('content')
 
 <h2 class="page-title">Create account</h2>
+<p class="page-subtitle">Register to start managing your academic tasks.</p>
 
 @if ($errors->any())
     <div class="msg-box error">

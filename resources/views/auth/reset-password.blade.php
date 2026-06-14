@@ -3,9 +3,8 @@
 @section('content')
 
 <h2 class="page-title">New password</h2>
-
-<p class="file-hint" style="margin-bottom:18px">
-    Use the <strong>latest</strong> reset link from <strong>storage/logs/laravel.log</strong>.
+<p class="page-subtitle">
+    Use the <strong>latest</strong> reset link from <strong>{{ config('logging.channels.single.path') }}</strong>.
     Older links stop working after you request a new one.
 </p>
 

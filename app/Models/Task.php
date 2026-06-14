@@ -10,6 +10,7 @@ class Task extends Model
 {
     protected $fillable = [
         'user_id',
+        'project_id',
         'title',
         'description',
         'subject',
@@ -20,6 +21,16 @@ class Task extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function project(): BelongsTo
+    {
+        return $this->belongsTo(Project::class);
+    }
+
+    public function isPersonal(): bool
+    {
+        return $this->project_id === null;
     }
 
     public function attachments(): HasMany

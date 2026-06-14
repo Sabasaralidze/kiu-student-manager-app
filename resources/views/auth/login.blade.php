@@ -3,6 +3,7 @@
 @section('content')
 
 <h2 class="page-title">Sign in</h2>
+<p class="page-subtitle">Welcome back — enter your credentials to continue.</p>
 
 @if (session('status'))
     <div class="msg-box success">{{ session('status') }}</div>

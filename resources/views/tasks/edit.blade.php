@@ -2,7 +2,12 @@
 
 @section('content')
 
-<h2 class="page-title">Edit Task</h2>
+<div class="page-header">
+    <div>
+        <h2 class="page-title">Edit Task</h2>
+        <p class="page-subtitle">Update your personal task details or manage PDFs.</p>
+    </div>
+</div>
 
 @if (session('success'))
     <div class="msg-box success">{{ session('success') }}</div>

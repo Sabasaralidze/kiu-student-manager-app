@@ -16,7 +16,7 @@
 @if (session('status') === 'verification-link-sent')
     <div class="msg-box success">
         @if (session('mail-log-hint'))
-            Verification link saved to <strong>storage/logs/laravel.log</strong> (local mode).
+            Verification link saved to <strong>{{ config('logging.channels.single.path') }}</strong> (local mode).
             Open that file, search for <strong>Verify Email Address:</strong>, and open the link in your browser.
         @else
             A new verification link has been sent to your email address.

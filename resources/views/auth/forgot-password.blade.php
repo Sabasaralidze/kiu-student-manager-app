@@ -3,15 +3,12 @@
 @section('content')
 
 <h2 class="page-title">Reset password</h2>
-
-<p class="file-hint" style="margin-bottom:18px">
-    Enter your email and we will send you a link to choose a new password.
-</p>
+<p class="page-subtitle">Enter your email and we will send you a link to choose a new password.</p>
 
 @if (session('status'))
     <div class="msg-box success">
         @if (session('mail-log-hint'))
-            Reset link saved to <strong>storage/logs/laravel.log</strong> (local mode).
+            Reset link saved to <strong>{{ config('logging.channels.single.path') }}</strong> (local mode).
             Press <strong>Ctrl+F</strong>, search <strong>Reset Password</strong>, and open the <strong>last (newest)</strong> link only.
         @else
             {{ session('status') }}

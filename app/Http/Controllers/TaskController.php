@@ -10,19 +10,45 @@ class TaskController extends Controller
 {
     public function index(Request $request)
     {
-        $query = $request->user()->tasks()->with('attachments');
+        $user = $request->user();
+        $tasksQuery = $user->tasks();
 
-        if ($request->status) {
+        $today = now()->startOfDay();
+
+        $stats = [
+            'pending' => (clone $tasksQuery)->where('status', 'pending')->count(),
+            'overdue' => (clone $tasksQuery)->where('status', 'pending')
+                ->whereDate('deadline', '<', $today)->count(),
+            'completed_week' => (clone $tasksQuery)->where('status', 'done')
+                ->where('updated_at', '>=', now()->startOfWeek())->count(),
+            'upcoming' => (clone $tasksQuery)->where('status', 'pending')
+                ->whereDate('deadline', '>=', $today)
+                ->whereDate('deadline', '<=', now()->addDays(7)->endOfDay())->count(),
+        ];
+
+        $query = $user->tasks()->with('attachments');
+
+        if ($request->filled('status')) {
             $query->where('status', $request->status);
         }
 
-        if ($request->sort == 'deadline') {
-            $query->orderBy('deadline');
+        if ($request->filled('q')) {
+            $term = $request->q;
+            $query->where(function ($q) use ($term) {
+                $q->where('title', 'like', "%{$term}%")
+                    ->orWhere('subject', 'like', "%{$term}%");
+            });
         }
 
-        $tasks = $query->latest()->get();
+        if ($request->get('sort', 'deadline') === 'deadline') {
+            $query->orderBy('deadline', 'asc');
+        } else {
+            $query->latest();
+        }
 
-        return view('tasks.index', compact('tasks'));
+        $tasks = $query->get();
+
+        return view('tasks.index', compact('tasks', 'stats'));
     }
 
     public function create()
@@ -110,7 +136,7 @@ class TaskController extends Controller
         $task->status = $task->status === 'pending' ? 'done' : 'pending';
         $task->save();
 
-        return redirect('/tasks');
+        return redirect()->back();
     }
 
     /**

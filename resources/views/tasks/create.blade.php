@@ -2,7 +2,12 @@
 
 @section('content')
 
-<h2 class="page-title">Create New Task</h2>
+<div class="page-header">
+    <div>
+        <h2 class="page-title">Create Task</h2>
+        <p class="page-subtitle">Personal assignment — saved on the Tasks tab only.</p>
+    </div>
+</div>
 
 @if ($errors->any())
     <div class="msg-box error">
@@ -20,22 +25,22 @@
 
     <div class="form-group">
         <label for="title">Task title</label>
-        <input type="text" id="title" name="title" placeholder="e.g. Submit research paper" value="{{ old('title') }}">
+        <input type="text" id="title" name="title" placeholder="e.g. Submit research paper" value="{{ old('title') }}" required>
     </div>
 
     <div class="form-group">
         <label for="description">Description</label>
-        <textarea id="description" name="description" placeholder="What needs to be done?">{{ old('description') }}</textarea>
+        <textarea id="description" name="description" placeholder="What needs to be done?" required>{{ old('description') }}</textarea>
     </div>
 
     <div class="form-group">
         <label for="subject">Subject / course</label>
-        <input type="text" id="subject" name="subject" placeholder="e.g. Database Systems" value="{{ old('subject') }}">
+        <input type="text" id="subject" name="subject" placeholder="e.g. Database Systems" value="{{ old('subject') }}" required>
     </div>
 
     <div class="form-group">
         <label for="deadline">Deadline</label>
-        <input type="date" id="deadline" name="deadline" value="{{ old('deadline') }}">
+        <input type="date" id="deadline" name="deadline" value="{{ old('deadline') }}" required>
     </div>
 
     <div class="form-group">

@@ -3,53 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIU Student Task Manager</title>
+    <title>{{ request()->routeIs('projects.*') ? 'Projects' : 'Tasks' }} — KIU Student Manager</title>
     @include('layouts.partials.theme-init')
     @include('layouts.partials.kiu-styles')
     <style>
         .site-header-inner { justify-content: space-between; }
-        .header-brand { display: flex; align-items: center; gap: 18px; }
-        .header-brand-link { text-decoration: none; color: inherit; }
+        .header-brand { display: flex; align-items: center; gap: 14px; }
         .header-account {
             display: flex;
             align-items: center;
-            gap: 14px;
-            color: var(--white);
-            font-size: 13px;
+            gap: 10px;
         }
-        .header-account .user-name { font-weight: bold; white-space: nowrap; }
         .header-account form { display: inline; margin: 0; }
-        .header-account .btn-header {
-            background: transparent;
-            color: var(--white);
-            border: 1px solid #a8c4e0;
-            padding: 5px 12px;
-            font-size: 12px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: bold;
-        }
-        .header-account .btn-header:hover { background: var(--blue); border-color: var(--blue); }
     </style>
 </head>
 <body>
 
+    @php
+        $onProjects = request()->routeIs('projects.*');
+        $homeRoute = $onProjects ? route('projects.index') : route('tasks.index');
+    @endphp
+
     <header class="site-header">
         <div class="site-header-inner">
-            <a href="{{ route('tasks.index') }}" class="header-brand header-brand-link" title="Back to main screen">
+            <a href="{{ $homeRoute }}" class="header-brand header-brand-link" title="Back to main screen">
                 <img src="/images/kiu-logo.png" class="logo" alt="KIU Logo">
                 <div class="site-header-text">
-                    <h1>KIU Student Task Manager</h1>
-                    <p>Academic task &amp; document portal</p>
+                    <h1>{{ $onProjects ? 'KIU Student Project Manager' : 'KIU Student Task Manager' }}</h1>
+                    <p>{{ $onProjects ? 'Academic project &amp; team portal' : 'Academic task &amp; document portal' }}</p>
                 </div>
             </a>
             <div class="header-account">
                 @include('layouts.partials.theme-toggle')
-                <span class="user-name">{{ Auth::user()->name }}</span>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="btn-header">Log out</button>
-                </form>
+                <div class="user-pill">
+                    <a href="{{ route('profile.edit') }}" class="user-pill-link" title="Edit profile">
+                        <span class="user-avatar" aria-hidden="true">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
+                        <span class="user-name">{{ Auth::user()->name }}</span>
+                    </a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn-header">Log out</button>
+                    </form>
+                </div>
             </div>
         </div>
     </header>
@@ -67,6 +62,7 @@
     </footer>
 
     @include('layouts.partials.theme-script')
+    @include('layouts.partials.password-toggle-script')
 
 </body>
 </html>
