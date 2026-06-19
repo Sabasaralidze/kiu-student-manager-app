@@ -1,0 +1,28 @@
+KIU Student Manager — Thesis screenshots
+=========================================
+
+Use these images in your project report. Suggested captions:
+
+01-login.png
+  Figure: Login page (authentication, guest middleware, CSRF form).
+
+02-tasks-index.png
+  Figure: Task list with dashboard stats, search, and filters (Read operation).
+
+03-task-create.png
+  Figure: Create task form with validation fields and PDF upload (Create operation).
+
+04-task-edit-pdf.png
+  Figure: Edit task form — Update operation and file upload support.
+
+05-projects-index.png
+  Figure: Projects list with team members (Many-to-Many relationship).
+
+06-profile-student.png
+  Figure: User profile with StudentProfile fields (One-to-One relationship).
+
+07-register.png
+  Figure: User registration page (authentication).
+
+Demo login for live demo: demo@kiu.edu.ge / password
+(Run: php artisan db:seed)

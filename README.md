@@ -61,6 +61,10 @@ Set `MAIL_MAILER=log` in `.env` to write reset links to `storage/logs/laravel.lo
 php artisan test
 ```
 
+## Screenshots for thesis
+
+Ready-made screenshots are in `docs/screenshots/` (see `SCREENSHOTS.txt` for suggested figure captions).
+
 ## Project structure
 
 ```
