@@ -1,59 +1,77 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# KIU Student Manager
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel CRUD web application for managing academic **tasks** (with PDF attachments) and **team projects**, built for the KIU Web Programming final project.
 
-## About Laravel
+## Features (syllabus mapping)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+| Concept | Implementation |
+|---------|----------------|
+| **MVC** | Models, Blade views, controllers, policies |
+| **Migrations** | `users`, `tasks`, `attachments`, `projects`, `project_user`, `student_profiles` |
+| **Eloquent ORM** | Full model layer with relationships |
+| **One-to-One** | `User` ↔ `StudentProfile` |
+| **One-to-Many** | `User` → `Task`, `Task` → `Attachment`, `User` → `Project` |
+| **Many-to-Many** | `Project` ↔ `User` (teammates via `project_user`) |
+| **CRUD** | Tasks and Projects (create, read, update, delete) |
+| **Blade** | Layouts, `@if`, `@foreach`, server-side rendering |
+| **Authentication** | Register, login, logout, password reset |
+| **Middleware** | `auth` / `guest` route protection |
+| **Validation & CSRF** | Form validation + `@csrf` on all forms |
+| **File uploads** | PDF attachments on tasks |
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requirements
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP 8.2+
+- Composer
+- SQLite (default) or MySQL
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+```bash
+git clone https://github.com/Sabasaralidze/kiu-student-manager-app.git
+cd kiu-student-manager-app
+composer install
+cp .env.example .env   # Windows: copy .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan db:seed    # optional demo data
+php artisan serve
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Open [http://localhost:8000](http://localhost:8000).
 
-## Laravel Sponsors
+### Demo account (after `db:seed`)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+| Email | Password |
+|-------|----------|
+| `demo@kiu.edu.ge` | `password` |
+| `member@kiu.edu.ge` | `password` |
 
-### Premium Partners
+## Windows / OneDrive note
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+If `php artisan` fails because OneDrive locks files, uncomment the temp-path lines in `.env.example` and set paths under `%LOCALAPPDATA%\Temp\`.
 
-## Contributing
+## Password reset (local)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Set `MAIL_MAILER=log` in `.env` to write reset links to `storage/logs/laravel.log`, or configure Gmail SMTP in `.env.example`.
 
-## Code of Conduct
+## Running tests
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+php artisan test
+```
 
-## Security Vulnerabilities
+## Project structure
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+app/Models/          User, Task, Project, Attachment, StudentProfile
+app/Http/Controllers TaskController, ProjectController, ProfileController, ...
+app/Policies/        TaskPolicy, ProjectPolicy
+database/migrations/ Schema definitions
+resources/views/     Blade templates (tasks, projects, calendar, profile, auth)
+routes/web.php       Application routes
+```
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+MIT — Laravel framework license applies to the underlying skeleton.

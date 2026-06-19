@@ -5,7 +5,7 @@
 <div class="page-header">
     <div>
         <h2 class="page-title">Profile</h2>
-        <p class="page-subtitle">Update your account details and password.</p>
+        <p class="page-subtitle">Update your account and student information.</p>
     </div>
     <a href="{{ route('tasks.index') }}" class="btn btn-outline">Back to tasks</a>
 </div>
@@ -40,6 +40,21 @@
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="student_id">Student ID</label>
+                <input type="text" id="student_id" name="student_id" value="{{ old('student_id', $profile->student_id) }}" placeholder="e.g. ST2024001">
+            </div>
+
+            <div class="form-group">
+                <label for="faculty">Faculty / Program</label>
+                <input type="text" id="faculty" name="faculty" value="{{ old('faculty', $profile->faculty) }}" placeholder="e.g. Computer Science">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" value="{{ old('phone', $profile->phone) }}" placeholder="e.g. +995 555 123 456">
             </div>
 
             <div class="form-actions" style="border-top: none; padding-top: 0; margin-top: 8px;">

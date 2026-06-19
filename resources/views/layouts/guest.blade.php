@@ -12,7 +12,7 @@
     <header class="site-header">
         <div class="site-header-inner" style="justify-content: space-between;">
             <a href="{{ url('/') }}" class="header-brand-link" title="Back to home">
-                <img src="/images/kiu-logo.png" class="logo" alt="KIU Logo">
+                <img src="/images/kiu-logo.svg" class="logo" alt="KIU Logo">
                 <div class="site-header-text">
                     <h1>KIU Student Task Manager</h1>
                     <p>Student sign in</p>

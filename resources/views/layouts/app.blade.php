@@ -27,7 +27,7 @@
     <header class="site-header">
         <div class="site-header-inner">
             <a href="{{ $homeRoute }}" class="header-brand header-brand-link" title="Back to main screen">
-                <img src="/images/kiu-logo.png" class="logo" alt="KIU Logo">
+                <img src="/images/kiu-logo.svg" class="logo" alt="KIU Logo">
                 <div class="site-header-text">
                     <h1>{{ $onProjects ? 'KIU Student Project Manager' : 'KIU Student Task Manager' }}</h1>
                     <p>{{ $onProjects ? 'Academic project &amp; team portal' : 'Academic task &amp; document portal' }}</p>
