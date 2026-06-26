@@ -13,6 +13,21 @@ Route::get('/', function () {
         : redirect('/login');
 });
 
+Route::get('/report-preview', function () {
+    return response()->file(base_path('docs/gallery.html'));
+});
+
+Route::get('/report-assets/{path}', function (string $path) {
+    $safe = str_replace(['..', '\\'], '', $path);
+    $file = base_path('docs/'.$safe);
+
+    if (! is_file($file)) {
+        abort(404);
+    }
+
+    return response()->file($file);
+})->where('path', '.*');
+
 require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function () {

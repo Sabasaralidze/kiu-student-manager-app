@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIU Student Manager — Screenshots &amp; Diagrams</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: "Segoe UI", system-ui, sans-serif;
+            margin: 0;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.5;
+        }
+        header {
+            background: linear-gradient(135deg, #1e3a5f, #2563eb);
+            padding: 24px 32px;
+            border-bottom: 3px solid #c9a227;
+        }
+        header h1 { margin: 0 0 8px; font-size: 1.5rem; }
+        header p { margin: 0; opacity: 0.9; font-size: 0.95rem; }
+        header a { color: #fde68a; }
+        main { max-width: 1100px; margin: 0 auto; padding: 24px 20px 48px; }
+        h2 {
+            color: #93c5fd;
+            margin: 32px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #334155;
+        }
+        .card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+            border: 1px solid #334155;
+        }
+        .card h3 { margin: 0 0 4px; font-size: 1.1rem; color: #f8fafc; }
+        .card p { margin: 0 0 12px; font-size: 0.9rem; color: #94a3b8; }
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #475569;
+            display: block;
+            background: #0f172a;
+        }
+        .diagram img { max-height: 420px; object-fit: contain; }
+        .tip {
+            background: #172554;
+            border: 1px solid #3b82f6;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+        }
+        code { background: #334155; padding: 2px 6px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>KIU Student Task Manager — Thesis visuals</h1>
+        <p>All screenshots and diagrams for your project report. Full text: <a href="PROJECT_REPORT.md">PROJECT_REPORT.md</a></p>
+    </header>
+    <main>
+        <div class="tip">
+            <strong>How to open:</strong> Double-click this file in File Explorer, or while <code>php artisan serve</code> is running visit
+            <a href="http://127.0.0.1:8000/report-preview">http://127.0.0.1:8000/report-preview</a>
+        </div>
+
+        <h2>Diagrams</h2>
+
+        <div class="card diagram">
+            <h3>Figure 2.1 — MVC architecture</h3>
+            <p>Model–View–Controller request flow</p>
+            <img src="diagrams/mvc-diagram.svg" alt="MVC diagram">
+        </div>
+
+        <div class="card diagram">
+            <h3>Figure 3.1 — Entity-Relationship diagram</h3>
+            <p>Database tables and relationships</p>
+            <img src="diagrams/er-diagram.svg" alt="ER diagram">
+        </div>
+
+        <h2>Screenshots</h2>
+
+        <div class="card">
+            <h3>Figure 4.1 — Login page</h3>
+            <p>Authentication and guest middleware</p>
+            <img src="screenshots/01-login.png" alt="Login page">
+        </div>
+
+        <div class="card">
+            <h3>Figure 4.2 — Registration</h3>
+            <p>User registration form</p>
+            <img src="screenshots/07-register.png" alt="Register page">
+        </div>
+
+        <div class="card">
+            <h3>Figure 4.3 — Task list (Read)</h3>
+            <p>Dashboard stats, search, and filters</p>
+            <img src="screenshots/02-tasks-index.png" alt="Tasks index">
+        </div>
+
+        <div class="card">
+            <h3>Figure 4.4 — Create task</h3>
+            <p>Create operation with validation</p>
+            <img src="screenshots/03-task-create.png" alt="Create task">
+        </div>
+
+        <div class="card">
+            <h3>Figure 4.5 — Edit task + PDF upload</h3>
+            <p>Update operation and file upload</p>
+            <img src="screenshots/04-task-edit-pdf.png" alt="Edit task">
+        </div>
+
+        <div class="card">
+            <h3>Figure 4.6 — Projects with teammates</h3>
+            <p>Many-to-Many relationship (project_user)</p>
+            <img src="screenshots/05-projects-index.png" alt="Projects index">
+        </div>
+
+        <div class="card">
+            <h3>Figure 4.7 — Student profile (One-to-One)</h3>
+            <p>User ↔ StudentProfile relationship</p>
+            <img src="screenshots/06-profile-student.png" alt="Profile page">
+        </div>
+    </main>
+</body>
+</html>
