@@ -1,0 +1,22 @@
+flowchart LR
+    subgraph Browser
+        U[User]
+    end
+
+    subgraph Laravel Application
+        R[Routes]
+        C[Controllers]
+        M[Models]
+        V[Blade Views]
+        P[Policies]
+    end
+
+    DB[(Database)]
+    FS[File Storage]
+
+    U --> R --> C
+    C --> P
+    C --> M --> DB
+    C --> V --> U
+    C -->|JSON API| U
+    M --> FS

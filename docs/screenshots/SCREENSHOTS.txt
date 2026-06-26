@@ -1,28 +1,22 @@
-KIU Student Manager — Thesis screenshots
-=========================================
+KIU Student Manager — Screenshot & diagram index
+================================================
 
-Use these images in your project report. Suggested captions:
+DIAGRAMS (for thesis)
+---------------------
+docs/diagrams/mvc-diagram.svg   — Figure 2.1 MVC architecture
+docs/diagrams/er-diagram.svg    — Figure 3.1 Entity-Relationship diagram
 
-01-login.png
-  Figure: Login page (authentication, guest middleware, CSRF form).
+SCREENSHOTS (embedded in PROJECT_REPORT.md Section 4)
+-----------------------------------------------------
+01-login.png           — Figure 4.1 Login
+07-register.png        — Figure 4.2 Registration
+02-tasks-index.png     — Figure 4.3 Task list (Read)
+03-task-create.png     — Figure 4.4 Create task
+04-task-edit-pdf.png   — Figure 4.5 Edit task + PDF upload
+05-projects-index.png  — Figure 4.6 Projects + teammates
+06-profile-student.png — Figure 4.7 StudentProfile (1:1)
 
-02-tasks-index.png
-  Figure: Task list with dashboard stats, search, and filters (Read operation).
-
-03-task-create.png
-  Figure: Create task form with validation fields and PDF upload (Create operation).
-
-04-task-edit-pdf.png
-  Figure: Edit task form — Update operation and file upload support.
-
-05-projects-index.png
-  Figure: Projects list with team members (Many-to-Many relationship).
-
-06-profile-student.png
-  Figure: User profile with StudentProfile fields (One-to-One relationship).
-
-07-register.png
-  Figure: User registration page (authentication).
-
-Demo login for live demo: demo@kiu.edu.ge / password
-(Run: php artisan db:seed)
+WORD / PDF TIP
+--------------
+Open docs/PROJECT_REPORT.md in VS Code or Cursor preview to see all images inline.
+In Microsoft Word: Insert → Pictures → select files from docs/screenshots/ and docs/diagrams/

@@ -1,0 +1,6 @@
+erDiagram
+    users ||--o| student_profiles : has_one
+    users ||--o{ tasks : owns
+    users ||--o{ projects : owns
+    users }o--o{ projects : teammates
+    tasks ||--o{ attachments : has_many

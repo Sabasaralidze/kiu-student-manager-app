@@ -18,6 +18,7 @@ A Laravel CRUD web application for managing academic **tasks** (with PDF attachm
 | **Middleware** | `auth` / `guest` route protection |
 | **Validation & CSRF** | Form validation + `@csrf` on all forms |
 | **File uploads** | PDF attachments on tasks |
+| **JSON API** | `GET /api/tasks`, `GET /api/tasks/{id}` (authenticated) |
 
 ## Requirements
 
@@ -61,6 +62,23 @@ Set `MAIL_MAILER=log` in `.env` to write reset links to `storage/logs/laravel.lo
 php artisan test
 ```
 
+## JSON API
+
+After logging in (session), authenticated users can read tasks as JSON:
+
+| Method | URL | Description |
+|--------|-----|-------------|
+| GET | `/api/tasks` | List current user's tasks |
+| GET | `/api/tasks/{id}` | Single task with attachments |
+
+Example (while logged in via browser): open `http://localhost:8000/api/tasks`
+
+## Project report
+
+Full thesis draft with MVC and ER diagrams: `docs/PROJECT_REPORT.md`  
+Diagram source files: `docs/diagrams/`  
+Screenshots: `docs/screenshots/`
+
 ## Screenshots for thesis
 
 Ready-made screenshots are in `docs/screenshots/` (see `SCREENSHOTS.txt` for suggested figure captions).
@@ -74,6 +92,8 @@ app/Policies/        TaskPolicy, ProjectPolicy
 database/migrations/ Schema definitions
 resources/views/     Blade templates (tasks, projects, calendar, profile, auth)
 routes/web.php       Application routes
+routes/api.php       JSON API routes
+docs/PROJECT_REPORT.md  Thesis / project report draft
 ```
 
 ## License
